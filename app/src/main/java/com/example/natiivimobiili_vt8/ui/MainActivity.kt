@@ -1,6 +1,7 @@
 package com.example.natiivimobiili_vt8.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -16,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.natiivimobiili_vt8.model.Todo
 import com.example.natiivimobiili_vt8.ui.theme.Natiivimobiilivt8Theme
 import com.example.natiivimobiili_vt8.viewmodel.TodoViewModel
 
@@ -43,16 +45,14 @@ fun TodoScreen(todoViewModel: TodoViewModel = viewModel()) {
 }
 
 @Composable
-fun TodoList(todos: List<String>) {
+fun TodoList(todos: List<Todo>) {
     LazyColumn(modifier = Modifier.padding(8.dp)) {
         items(todos.size) { index ->
             Text(
-                text = todos[index],
+                text = todos[index].title,
                 modifier = Modifier.padding(top = 4.dp, bottom = 4.dp)
             )
-            if (index < todos.size - 1) {
-                HorizontalDivider(thickness = 1.dp, color = Color.LightGray)
-            }
+            HorizontalDivider(thickness = 1.dp, color = Color.LightGray)
         }
     }
 }
