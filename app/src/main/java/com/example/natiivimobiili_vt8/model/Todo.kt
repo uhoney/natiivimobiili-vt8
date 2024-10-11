@@ -4,6 +4,8 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 
+data class Success(val todos: List<Todo>)
+
 data class Todo(
     var userId: Int,
     var id: Int,
